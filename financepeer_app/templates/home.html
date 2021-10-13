@@ -1,0 +1,31 @@
+{% extends './base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+ <h2>Upload JSON</h2>
+ <a href="{% url 'task:logout' %}" class="btn btn-primary mt-2">Logout</a>
+  <form method="post" enctype='multipart/form-data'/>
+    {% csrf_token %}
+    {{ form | crispy }}
+    <button type="submit" class="btn btn-primary">Upload</button>
+  </form>
+  {% if blogs %}
+
+  <div class="row mb-5">
+  {% for blog in blogs %}
+    <div class="col-lg-4 mt-3">
+      <div class="card">
+          <div class="card-header">
+            {{blog.userId.username}}
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>{{blog.body}}.</p>
+              <footer class="blockquote-footer">From <cite title="Source Title">{{blog.title}}</cite></footer>
+            </blockquote>
+          </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+    {% endif %}
+{% endblock content %}
