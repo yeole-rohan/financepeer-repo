@@ -15,7 +15,7 @@
     <div class="col-lg-4 mt-3">
       <div class="card">
           <div class="card-header">
-            {{blog.userId.username}}
+            {{blog.userId.username | capfirst}},  <small>On {{blog.created_date}}</small>
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">

@@ -27,7 +27,7 @@ def signup(request):
 
 @login_required(login_url="/accounts/login/")
 def home(request):
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.all().order_by('-created_date')
     if request.method == 'POST':
         form = JSONForm(request.POST, request.FILES)
         if form.is_valid():
